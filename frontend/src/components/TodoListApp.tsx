@@ -3,6 +3,7 @@ import * as React from "react";
 import { Todo } from "../../../shared/schema/Todo";
 import GetTodosAction from "../actions/GetTodosAction";
 import ToggleCheckedAction from "../actions/ToggleCheckedAction";
+import AddTodoForm from "./AddTodoForm";
 import TodoListItem from "./TodoListItem";
 
 import "./TodoListApp.css";
@@ -69,6 +70,7 @@ export default class TodoListApp extends React.Component<AppProps, AppState> {
           <div className="todo-list-container">
             {todoList}
           </div>
+          <AddTodoForm submitCallback={this.addTodo} />
         </div>
       </div>
     );
