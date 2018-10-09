@@ -1,6 +1,7 @@
 import * as React from "react";
 
 import { Todo } from "../../../shared/schema/Todo";
+import GetTodosAction from "../actions/GetTodosAction";
 import TodoListItem from "./TodoListItem";
 
 import "./TodoListApp.css";
@@ -32,7 +33,8 @@ export default class TodoListApp extends React.Component<AppProps, AppState> {
     this.toggleChecked = this.toggleChecked.bind(this);
   }
 
-  // Once the component has finished mounting, load a list of todos to display.
+  // Once the component has finished mounting, try to fetch the todos from our
+  // database.
   public componentDidMount() {
     this.getTodos();
   }
@@ -76,7 +78,10 @@ export default class TodoListApp extends React.Component<AppProps, AppState> {
   }
 
   private async getTodos() {
-    // TODO
+    const todos = await GetTodosAction();
+    this.setState({
+      todos
+    });
   }
 
   private async toggleChecked(id: number) {
