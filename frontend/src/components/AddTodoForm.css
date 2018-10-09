@@ -1,0 +1,8 @@
+.add-todo-form {
+  font-size: 1.1em;
+  padding: 2px;
+}
+
+.add-todo-form > input[type='text'] {
+  font-size: .8em;
+}

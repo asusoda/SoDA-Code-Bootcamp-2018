@@ -1,0 +1,23 @@
+.todo-list-container {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  margin: 10px 0;
+}
+
+.todo-list-item {
+  flex: 1;
+}
+
+.todo-list-item {
+  font-size: 1.1em;
+  padding: 2px 0;
+}
+
+.todo-list-item > .description {
+  display: inline;
+}
+
+.todo-list-item > .description.checked {
+  text-decoration: line-through;
+}
