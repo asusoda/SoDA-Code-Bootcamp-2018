@@ -2,6 +2,7 @@ import * as React from "react";
 
 import { Todo } from "../../../shared/schema/Todo";
 import GetTodosAction from "../actions/GetTodosAction";
+import ToggleCheckedAction from "../actions/ToggleCheckedAction";
 import TodoListItem from "./TodoListItem";
 
 import "./TodoListApp.css";
@@ -85,6 +86,18 @@ export default class TodoListApp extends React.Component<AppProps, AppState> {
   }
 
   private async toggleChecked(id: number) {
-    // TODO
+    const succeeded = await ToggleCheckedAction(id);
+    this.setState((state) => {
+      const todos = state.todos;
+      const todo = todos.get(id);
+
+      if (succeeded && todo !== undefined) {
+        todo.checked = !todo.checked;
+      }
+
+      return {
+        todos
+      };
+    });
   }
 }
