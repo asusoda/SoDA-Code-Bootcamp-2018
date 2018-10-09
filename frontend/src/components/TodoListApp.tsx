@@ -1,6 +1,7 @@
 import * as React from "react";
 
 import { Todo } from "../../../shared/schema/Todo";
+import AddTodoAction from "../actions/AddTodoAction";
 import GetTodosAction from "../actions/GetTodosAction";
 import ToggleCheckedAction from "../actions/ToggleCheckedAction";
 import AddTodoForm from "./AddTodoForm";
@@ -77,7 +78,14 @@ export default class TodoListApp extends React.Component<AppProps, AppState> {
   }
 
   private async addTodo(description: string) {
-    // TODO
+    const todo = await AddTodoAction(description);
+    this.setState((state) => {
+      const todos = state.todos;
+      todos.set(todo.id, todo);
+      return {
+        todos
+      };
+    });
   }
 
   private async getTodos() {
