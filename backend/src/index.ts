@@ -1,11 +1,18 @@
 import * as bodyParser from "body-parser";
 import * as express from "express";
 
+import { initDataLayer } from "./DataLayer";
 
 // Read environment variable for port, default to 8000 if undefined.
 const port = process.env.PORT || 8000;
 
-const startApp = () => {
+// Since we have to wait on an asynchronous action (data layer initialization),
+// we must put all the app start-up logic in an async function.
+const startApp = async () => {
+  // Ensure that our database connection and our models have been initialized
+  // before starting the express server.
+  await initDataLayer();
+
   // Create our web server.
   const app = express();
 
