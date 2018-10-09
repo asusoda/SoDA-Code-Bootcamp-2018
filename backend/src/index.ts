@@ -2,6 +2,7 @@ import * as bodyParser from "body-parser";
 import * as express from "express";
 
 import { initDataLayer } from "./DataLayer";
+import rootRouter from "./Routes";
 
 // Read environment variable for port, default to 8000 if undefined.
 const port = process.env.PORT || 8000;
@@ -26,6 +27,10 @@ const startApp = async () => {
     response.header("Access-Control-Allow-Headers", "Content-Type");
     next();
   });
+
+  // Configure the app to use our rootRouter for routing incoming API requests.
+  // see rootRouter.js for the endpoints.
+  app.use(rootRouter);
 
   console.log("App is listening on port", port);
   app.listen(port);
