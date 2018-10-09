@@ -1,0 +1,26 @@
+{
+  "defaultSeverity": "error",
+  "extends": [
+    "tslint:recommended", "tslint-eslint-rules", "tslint-react"
+  ],
+  "jsRules": {},
+  "rules": {
+    "arrow-parens": [true],
+    "interface-over-type-literal": false,
+    "trailing-comma": [true, { "multiline": "never", "singleline": "never" }],
+    "quotemark": [true, "double", "jsx-double"],
+    "arrow-return-shorthand": [true, "multiline"],
+    "prefer-object-spread": true,
+    "object-curly-spacing": [true, "always", { "arraysInObjects": false }],
+    "indent": [true, "spaces", 2],
+    "ter-arrow-body-style": [true, "as-needed"],
+    "no-console": false
+  },
+  "rulesDirectory": [],
+  "linterOptions": {
+    "exclude": [
+      "node_modules/**",
+      "dist/**"
+    ]
+  }
+}
