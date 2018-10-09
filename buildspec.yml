@@ -1,0 +1,31 @@
+version: 0.2
+phases:
+  install:
+    commands:
+      - npm i -g yarn@1.10.1
+      - cd backend
+      - yarn
+      - cd ../frontend
+      - yarn
+      - cd ..
+  build:
+    commands:
+      - cd frontend
+      - yarn build
+      - cd ../backend
+      - yarn build
+      - cd ..
+  post_build:
+    commands:
+      - aws s3 sync ./frontend/dist <your s3>
+
+artifacts:
+  files:
+    - .yarnrc
+    - .npmrc
+    - dist/**/*
+    - package.json
+    - yarn.lock
+    - todos.db
+
+  base-directory: ./backend
